@@ -1,0 +1,1169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nControl ESP32-C3 Hub I/O — v1/v2",
+  "$defs": {
+    "servo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "pin": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            20,
+            21
+          ]
+        },
+        "hz": {
+          "type": "integer",
+          "minimum": 40,
+          "maximum": 333
+        },
+        "minUs": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 2500
+        },
+        "maxUs": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 2500
+        },
+        "minAngle": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        },
+        "maxAngle": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        },
+        "reverse": {
+          "type": "boolean"
+        },
+        "speed": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 360
+        },
+        "detachAfter": {
+          "type": "boolean"
+        },
+        "boot": {
+          "enum": [
+            "none",
+            "safe"
+          ]
+        },
+        "offline": {
+          "enum": [
+            "hold",
+            "safe",
+            "detach"
+          ]
+        },
+        "safeAngle": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "pin",
+        "hz",
+        "minUs",
+        "maxUs",
+        "minAngle",
+        "maxAngle",
+        "reverse",
+        "speed",
+        "detachAfter",
+        "boot",
+        "offline",
+        "safeAngle"
+      ],
+      "additionalProperties": false
+    },
+    "chain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "pin": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            20,
+            21
+          ]
+        },
+        "type": {
+          "enum": [
+            "WS2812B",
+            "SK6812RGB",
+            "SK6812RGBW"
+          ]
+        },
+        "order": {
+          "enum": [
+            "RGB",
+            "GRB",
+            "RGBW",
+            "GRBW"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300
+        },
+        "brightness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "pin",
+        "type",
+        "order",
+        "count",
+        "brightness"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SK6812RGBW"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "order": {
+                "enum": [
+                  "RGBW",
+                  "GRBW"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "order": {
+                "enum": [
+                  "RGB",
+                  "GRB"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "chain": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 299
+          },
+          "minItems": 1,
+          "maxItems": 300,
+          "uniqueItems": true
+        },
+        "priority": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "chain",
+        "pixels",
+        "priority"
+      ],
+      "additionalProperties": false
+    },
+    "binding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "type": {
+          "enum": [
+            "T",
+            "S"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96,
+          "pattern": "^[^|]+$"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/state"
+          },
+          "minItems": 1,
+          "maxItems": 128
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "enabled",
+        "type",
+        "source",
+        "states"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "S"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "source": {
+                "pattern": "^(0|[1-9][0-9]{0,9})$"
+              },
+              "states": {
+                "items": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^-?[0-9]{1,10}$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 96
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/servoAction"
+              },
+              {
+                "$ref": "#/$defs/ledAction"
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 256
+        }
+      },
+      "required": [
+        "value",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "servoAction": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "servo"
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "angle": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 180
+        }
+      },
+      "required": [
+        "kind",
+        "target",
+        "angle"
+      ],
+      "additionalProperties": false
+    },
+    "ledAction": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "led"
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "effect": {
+          "enum": [
+            "off",
+            "solid",
+            "blink",
+            "alternate"
+          ]
+        },
+        "color": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "brightness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "onMs": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 60000
+        },
+        "offMs": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 60000
+        },
+        "other": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 32
+        }
+      },
+      "required": [
+        "kind",
+        "target",
+        "effect",
+        "color",
+        "brightness",
+        "onMs",
+        "offMs"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "effect": {
+                "const": "alternate"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "other"
+            ],
+            "properties": {
+              "other": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "device": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+        },
+        "wifi": {
+          "type": "object",
+          "properties": {
+            "ssid": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 32
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ssid",
+            "password"
+          ],
+          "additionalProperties": false
+        },
+        "mqtt": {
+          "type": "object",
+          "properties": {
+            "host": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 128
+            },
+            "port": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "clientId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "user": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 64
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 128
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "stateTopic": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[^+#]+$"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "clientId",
+            "user",
+            "password",
+            "stateTopic"
+          ],
+          "additionalProperties": false
+        },
+        "modeTopic": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128,
+          "pattern": "^[^+#]*$"
+        },
+        "uart0": {
+          "type": "boolean"
+        },
+        "externalJtag": {
+          "type": "boolean"
+        },
+        "allowStrapping": {
+          "type": "boolean"
+        },
+        "servos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/servo"
+          },
+          "minItems": 0,
+          "maxItems": 6
+        },
+        "chains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/chain"
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/group"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "version",
+        "device",
+        "wifi",
+        "mqtt",
+        "modeTopic",
+        "uart0",
+        "externalJtag",
+        "allowStrapping",
+        "servos",
+        "chains",
+        "groups",
+        "bindings"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "nControl ESP32-C3 — configuration v1",
+      "$comment": "Firmware additionally validates GPIO ownership/reservations, LEDC timers, pulse/angle ranges, ID references, binding owners, group priorities and LED indices. Limits: 128 states and 256 actions. Text limits count UTF-8 bytes."
+    },
+    {
+      "type": "object",
+      "properties": {
+        "device": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+        },
+        "wifi": {
+          "type": "object",
+          "properties": {
+            "ssid": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 32
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ssid",
+            "password"
+          ],
+          "additionalProperties": false
+        },
+        "mqtt": {
+          "type": "object",
+          "properties": {
+            "host": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 128
+            },
+            "port": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "clientId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "user": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 64
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 128
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "stateTopic": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[^+#]+$"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "clientId",
+            "user",
+            "password",
+            "stateTopic"
+          ],
+          "additionalProperties": false
+        },
+        "modeTopic": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128,
+          "pattern": "^[^+#]*$"
+        },
+        "uart0": {
+          "type": "boolean"
+        },
+        "externalJtag": {
+          "type": "boolean"
+        },
+        "allowStrapping": {
+          "type": "boolean"
+        },
+        "version": {
+          "const": 2
+        },
+        "ioPins": {
+          "type": "array",
+          "items": {
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              20,
+              21
+            ]
+          },
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "slot": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9
+              },
+              "pin": {
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  20,
+                  21
+                ]
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "template": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              },
+              "type": {
+                "enum": [
+                  "T",
+                  "S"
+                ]
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 96,
+                "pattern": "^[^|]+$"
+              },
+              "servo": {
+                "type": "object",
+                "properties": {
+                  "hz": {
+                    "type": "integer",
+                    "minimum": 40,
+                    "maximum": 333
+                  },
+                  "minUs": {
+                    "type": "integer",
+                    "minimum": 500,
+                    "maximum": 2500
+                  },
+                  "maxUs": {
+                    "type": "integer",
+                    "minimum": 500,
+                    "maximum": 2500
+                  },
+                  "minAngle": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 180
+                  },
+                  "maxAngle": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 180
+                  },
+                  "reverse": {
+                    "type": "boolean"
+                  },
+                  "speed": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 360
+                  },
+                  "detachAfter": {
+                    "type": "boolean"
+                  },
+                  "boot": {
+                    "enum": [
+                      "none",
+                      "safe"
+                    ]
+                  },
+                  "offline": {
+                    "enum": [
+                      "hold",
+                      "safe",
+                      "detach"
+                    ]
+                  },
+                  "safeAngle": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 180
+                  }
+                },
+                "required": [
+                  "hz",
+                  "minUs",
+                  "maxUs",
+                  "minAngle",
+                  "maxAngle",
+                  "reverse",
+                  "speed",
+                  "detachAfter",
+                  "boot",
+                  "offline",
+                  "safeAngle"
+                ],
+                "additionalProperties": false
+              },
+              "ws": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "WS2812B",
+                      "SK6812RGB",
+                      "SK6812RGBW"
+                    ]
+                  },
+                  "order": {
+                    "enum": [
+                      "RGB",
+                      "GRB",
+                      "RGBW",
+                      "GRBW"
+                    ]
+                  },
+                  "brightness": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 255
+                  },
+                  "input": {
+                    "enum": [
+                      "json",
+                      "states"
+                    ]
+                  },
+                  "topic": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 128,
+                    "pattern": "^[^+#]*$"
+                  }
+                },
+                "required": [
+                  "type",
+                  "order",
+                  "brightness"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "slot",
+              "pin",
+              "enabled",
+              "template",
+              "type",
+              "source",
+              "servo",
+              "ws"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 10
+        },
+        "templates": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "kind": {
+                    "const": "signal"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 5
+                  },
+                  "states": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 96,
+                          "pattern": "^[^|]+$"
+                        },
+                        "pixels": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "effect": {
+                                "enum": [
+                                  "off",
+                                  "solid",
+                                  "blink"
+                                ]
+                              },
+                              "color": {
+                                "type": "array",
+                                "items": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 255
+                                },
+                                "minItems": 4,
+                                "maxItems": 4
+                              },
+                              "brightness": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 255
+                              },
+                              "onMs": {
+                                "type": "integer",
+                                "minimum": 20,
+                                "maximum": 60000
+                              },
+                              "offMs": {
+                                "type": "integer",
+                                "minimum": 20,
+                                "maximum": 60000
+                              },
+                              "phaseMs": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 120000
+                              }
+                            },
+                            "required": [
+                              "effect",
+                              "color"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 1,
+                          "maxItems": 5
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "pixels"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 128
+                  },
+                  "head": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "colors": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 32
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "kind",
+                  "count",
+                  "states"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "kind": {
+                    "const": "servo"
+                  },
+                  "states": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 96,
+                          "pattern": "^[^|]+$"
+                        },
+                        "angle": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 180
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "angle"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 128
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "kind",
+                  "states"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 24
+        }
+      },
+      "required": [
+        "device",
+        "wifi",
+        "mqtt",
+        "modeTopic",
+        "uart0",
+        "externalJtag",
+        "allowStrapping",
+        "version",
+        "ioPins",
+        "ports",
+        "templates"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$comment": "Firmware additionally validates unique slots/GPIO, hardware reservations, template references and per-servo angle limits; at most 128 states and 320 pixel definitions. Six hardware LEDC channels plus four timer ISR PWM channels at 50 Hz; at most ten devices total."
+}

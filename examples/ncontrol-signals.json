@@ -1,0 +1,1351 @@
+[
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "shunt",
+    "aspect": "Ms1",
+    "colors": [
+      "blue",
+      "white"
+    ],
+    "roles": [
+      "blue",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "shunt",
+    "aspect": "Ms2",
+    "colors": [
+      "blue",
+      "white"
+    ],
+    "roles": [
+      "blue",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "shunt",
+    "aspect": "OFF",
+    "colors": [
+      "blue",
+      "white"
+    ],
+    "roles": [
+      "blue",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRW",
+    "aspect": "S1",
+    "colors": [
+      "green",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRW",
+    "aspect": "S2",
+    "colors": [
+      "green",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRW",
+    "aspect": "S3",
+    "colors": [
+      "green",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRW",
+    "aspect": "Ms2",
+    "colors": [
+      "green",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRW",
+    "aspect": "OFF",
+    "colors": [
+      "green",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRW",
+    "aspect": "S1",
+    "colors": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRW",
+    "aspect": "S4",
+    "colors": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRW",
+    "aspect": "S5",
+    "colors": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRW",
+    "aspect": "Ms2",
+    "colors": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRW",
+    "aspect": "OFF",
+    "colors": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "S1",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "S2",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "S3",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "S6",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "S7",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-GRY",
+    "aspect": "OFF",
+    "colors": [
+      "green",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "S1",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "S4",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "S5",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "S8",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "S9",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "3-YRY",
+    "aspect": "OFF",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "S1",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "S2",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "S3",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "S6",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "S7",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "Ms2",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-GRYW",
+    "aspect": "OFF",
+    "colors": [
+      "green",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "S1",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "S4",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "S5",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "S8",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "S9",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "Ms2",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "4-YRYW",
+    "aspect": "OFF",
+    "colors": [
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S1",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "on",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S2",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S3",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S4",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S5",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "blink",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S6",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "on",
+      "off",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S7",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "blink",
+      "off",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S8",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "on",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "S9",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "blink",
+      "off",
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "Ms2",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "5-GYRYW",
+    "aspect": "OFF",
+    "colors": [
+      "green",
+      "yellow",
+      "red",
+      "yellow",
+      "white"
+    ],
+    "roles": [
+      "green",
+      "upper_yellow",
+      "red",
+      "lower_yellow",
+      "white"
+    ],
+    "lamps": [
+      "off",
+      "off",
+      "off",
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "classic-RG",
+    "aspect": "r",
+    "colors": [
+      "red",
+      "green"
+    ],
+    "roles": [
+      "red",
+      "green"
+    ],
+    "lamps": [
+      "on",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "classic-RG",
+    "aspect": "g",
+    "colors": [
+      "red",
+      "green"
+    ],
+    "roles": [
+      "red",
+      "green"
+    ],
+    "lamps": [
+      "off",
+      "on"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "classic-RG",
+    "aspect": "rf",
+    "colors": [
+      "red",
+      "green"
+    ],
+    "roles": [
+      "red",
+      "green"
+    ],
+    "lamps": [
+      "blink",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "classic-RG",
+    "aspect": "gf",
+    "colors": [
+      "red",
+      "green"
+    ],
+    "roles": [
+      "red",
+      "green"
+    ],
+    "lamps": [
+      "off",
+      "blink"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  },
+  {
+    "schema": "ncontrol-signal-v1",
+    "label": "Signal1",
+    "head": "classic-RG",
+    "aspect": "o",
+    "colors": [
+      "red",
+      "green"
+    ],
+    "roles": [
+      "red",
+      "green"
+    ],
+    "lamps": [
+      "off",
+      "off"
+    ],
+    "blink_period_ms": 1000,
+    "mode": "operational"
+  }
+]

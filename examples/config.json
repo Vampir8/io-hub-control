@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "device": "io-hub-control-ddeeff",
+  "wifi": {
+    "ssid": "YOUR-WIFI",
+    "password": ""
+  },
+  "mqtt": {
+    "host": "192.168.1.100",
+    "port": 1883,
+    "clientId": "io-hub-control-aabbccddeeff",
+    "user": "",
+    "password": "",
+    "stateTopic": "nControl/websocket/rx"
+  },
+  "modeTopic": "",
+  "uart0": false,
+  "externalJtag": true,
+  "allowStrapping": false,
+  "servos": [
+    {
+      "id": "servo1",
+      "name": "Zwrotnica",
+      "pin": 3,
+      "hz": 50,
+      "minUs": 1000,
+      "maxUs": 2000,
+      "minAngle": 30,
+      "maxAngle": 150,
+      "reverse": false,
+      "speed": 30,
+      "detachAfter": false,
+      "boot": "none",
+      "offline": "hold",
+      "safeAngle": 90
+    }
+  ],
+  "chains": [
+    {
+      "id": "ws1",
+      "name": "Semafory",
+      "pin": 10,
+      "type": "WS2812B",
+      "order": "GRB",
+      "count": 10,
+      "brightness": 64
+    }
+  ],
+  "groups": [
+    {
+      "id": "semafor1",
+      "name": "Signal 1",
+      "chain": "ws1",
+      "pixels": [
+        0,
+        1,
+        2
+      ],
+      "priority": null
+    },
+    {
+      "id": "trasa1",
+      "name": "Trasa prosto",
+      "chain": "ws1",
+      "pixels": [
+        3,
+        4
+      ],
+      "priority": null
+    }
+  ],
+  "bindings": [
+    {
+      "id": "zw1",
+      "name": "Turnout1",
+      "enabled": true,
+      "type": "T",
+      "source": "Turnout1",
+      "states": [
+        {
+          "value": "s",
+          "actions": [
+            {
+              "kind": "servo",
+              "target": "servo1",
+              "angle": 60
+            },
+            {
+              "kind": "led",
+              "target": "trasa1",
+              "effect": "solid",
+              "color": [
+                0,
+                255,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        },
+        {
+          "value": "t",
+          "actions": [
+            {
+              "kind": "servo",
+              "target": "servo1",
+              "angle": 120
+            },
+            {
+              "kind": "led",
+              "target": "trasa1",
+              "effect": "off",
+              "color": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sem1",
+      "name": "Signal1",
+      "enabled": true,
+      "type": "T",
+      "source": "Signal1",
+      "states": [
+        {
+          "value": "g",
+          "actions": [
+            {
+              "kind": "led",
+              "target": "semafor1",
+              "effect": "solid",
+              "color": [
+                0,
+                255,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        },
+        {
+          "value": "r",
+          "actions": [
+            {
+              "kind": "led",
+              "target": "semafor1",
+              "effect": "solid",
+              "color": [
+                255,
+                0,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        },
+        {
+          "value": "gf",
+          "actions": [
+            {
+              "kind": "led",
+              "target": "semafor1",
+              "effect": "blink",
+              "color": [
+                0,
+                255,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        },
+        {
+          "value": "rf",
+          "actions": [
+            {
+              "kind": "led",
+              "target": "semafor1",
+              "effect": "blink",
+              "color": [
+                255,
+                0,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        },
+        {
+          "value": "o",
+          "actions": [
+            {
+              "kind": "led",
+              "target": "semafor1",
+              "effect": "off",
+              "color": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "brightness": 255,
+              "onMs": 500,
+              "offMs": 500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

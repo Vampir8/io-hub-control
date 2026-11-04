@@ -1,0 +1,16 @@
+const esbuild=require('esbuild'),assert=require('assert'),fs=require('fs'),path=require('path'),vm=require('vm');
+const code=esbuild.buildSync({entryPoints:[path.join(__dirname,'src/model.js')],bundle:true,write:false,format:'cjs',target:'node14'}).outputFiles[0].text;
+const context={exports:{},module:{exports:{}},console};vm.runInNewContext(code,context);const m=context.module.exports;
+const root=path.join(__dirname,'..'),base=JSON.parse(fs.readFileSync(path.join(root,'examples/config.json'),'utf8'));
+base.chains[0].count=5;base.groups=base.groups.slice(0,1);for(const state of base.bindings[0].states)state.actions=state.actions.filter(a=>a.kind==='servo');let c=m.migrate(base);assert.equal(c.version,2);assert.equal(c.ports.length,2);assert.equal(c.ports[0].source,'Turnout1');assert.equal(c.ports[1].source,'Signal1');assert(!('groups' in c));assert.equal(base.version,1);
+let actions=m.preview(c,'T|Signal1|g');assert.equal(actions.length,1);assert.equal(actions[0].state.pixels[0].effect,'solid');assert.equal(actions[0].state.pixels[0].color[1],255);assert.equal(m.preview(c,'T|Signal1|UNKNOWN').length,0);
+const backup=JSON.stringify(base);const bad=m.clone(base);bad.chains[0].count=6;assert.throws(()=>m.migrate(bad));assert.equal(JSON.stringify(base),backup);
+function empty(){const c=m.clone(base);for(const k of ['servos','chains','groups','bindings'])delete c[k];Object.assign(c,{version:2,externalJtag:false,ioPins:[...m.DEFAULT_PINS],templates:m.builtins(),ports:[]});return c;}
+c=empty();for(let i=0;i<10;i++){const p=m.addPort(c,'nc-5-GYRYW');p.source='Signal'+(i+1);}assert.equal(new Set(c.ports.map(p=>p.pin)).size,10);assert.throws(()=>m.addPort(c,'nc-classic-RG'));assert.equal(m.preview(c,'T|Signal1|S3')[0].state.pixels.length,5);
+const t=m.clone(c.templates.find(t=>t.id==='nc-5-GYRYW'));m.resizeTemplate(t,3);assert(t.states.every(s=>s.pixels.length===3));m.resizeTemplate(t,5);assert(t.states.every(s=>s.pixels.length===5));assert.equal(c.ports.filter(p=>p.template===t.id).length,10);
+fs.writeFileSync(path.join(root,'examples/ports-signals.json'),JSON.stringify(m.compactConfig(c),null,2)+'\n');
+c=empty();for(let i=0;i<10;i++)m.addPort(c,'turnout');fs.writeFileSync(path.join(root,'examples/ports-servos.json'),JSON.stringify(m.compactConfig(c),null,2)+'\n');
+c=empty();m.addPort(c,'nc-classic-RG');m.addPort(c,'turnout');fs.writeFileSync(path.join(root,'examples/ports-mixed.json'),JSON.stringify(m.compactConfig(c),null,2)+'\n');
+const legacy=m.clone(c);legacy.ports[0].ws.input='json';legacy.ports[0].ws.topic='custom/signals';const migrated=m.migrate(legacy);assert.equal(migrated.ports[0].ws.input,'states');assert(!('topic' in migrated.ports[0].ws));assert.equal(legacy.ports[0].ws.input,'json','migration does not mutate saved settings');assert.equal(m.compactConfig(legacy).ports[0].ws.input,'states','explicit save selects T/S');assert.equal(m.addPort(empty(),'nc-classic-RG').ws.input,'states');
+const disconnected=m.clone(c);disconnected.mqtt.enabled=false;assert.equal(m.migrate(disconnected).mqtt.enabled,false);assert.equal(m.compactConfig(disconnected).mqtt.enabled,false);
+console.log('PASS model: migration, isolated local pixels, shared templates, 10 ports, 11th rejected; examples generated');

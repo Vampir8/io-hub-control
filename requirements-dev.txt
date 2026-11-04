@@ -1,0 +1,4 @@
+platformio==6.1.18
+jsonschema==4.23.0
+ziglang==0.13.0
+pyserial==3.5

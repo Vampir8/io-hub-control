@@ -1,0 +1,2578 @@
+{
+  "version": 2,
+  "device": "io-hub-control-ddeeff",
+  "wifi": {
+    "ssid": "YOUR-WIFI",
+    "password": ""
+  },
+  "mqtt": {
+    "host": "192.168.1.100",
+    "port": 1883,
+    "clientId": "io-hub-control-aabbccddeeff",
+    "user": "",
+    "password": "",
+    "stateTopic": "nControl/websocket/rx",
+    "enabled": true
+  },
+  "modeTopic": "",
+  "uart0": false,
+  "externalJtag": false,
+  "allowStrapping": false,
+  "ioPins": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    20,
+    21
+  ],
+  "templates": [
+    {
+      "id": "nc-shunt",
+      "name": "Shunting signal",
+      "kind": "signal",
+      "head": "shunt",
+      "count": 2,
+      "colors": [
+        "blue",
+        "white"
+      ],
+      "roles": [
+        "blue",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "Ms1",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                50,
+                140,
+                255,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                50,
+                140,
+                255,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                50,
+                140,
+                255,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-3-GRW",
+      "name": "3-lamp signal: G-R-W",
+      "kind": "signal",
+      "head": "3-GRW",
+      "count": 3,
+      "colors": [
+        "green",
+        "red",
+        "white"
+      ],
+      "roles": [
+        "green",
+        "red",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S2",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S3",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-3-YRW",
+      "name": "3-lamp signal: Y-R-W",
+      "kind": "signal",
+      "head": "3-YRW",
+      "count": 3,
+      "colors": [
+        "yellow",
+        "red",
+        "white"
+      ],
+      "roles": [
+        "upper_yellow",
+        "red",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S4",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S5",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-3-GRY",
+      "name": "3-lamp signal: G-R-Y",
+      "kind": "signal",
+      "head": "3-GRY",
+      "count": 3,
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "roles": [
+        "green",
+        "red",
+        "lower_yellow"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S2",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S3",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S6",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S7",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-3-YRY",
+      "name": "3-lamp signal: Y-R-Y",
+      "kind": "signal",
+      "head": "3-YRY",
+      "count": 3,
+      "colors": [
+        "yellow",
+        "red",
+        "yellow"
+      ],
+      "roles": [
+        "upper_yellow",
+        "red",
+        "lower_yellow"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S4",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S5",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S8",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S9",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-4-GRYW",
+      "name": "4-lamp signal: G-R-Y-W",
+      "kind": "signal",
+      "head": "4-GRYW",
+      "count": 4,
+      "colors": [
+        "green",
+        "red",
+        "yellow",
+        "white"
+      ],
+      "roles": [
+        "green",
+        "red",
+        "lower_yellow",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S2",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S3",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S6",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S7",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-4-YRYW",
+      "name": "4-lamp signal: Y-R-Y-W",
+      "kind": "signal",
+      "head": "4-YRYW",
+      "count": 4,
+      "colors": [
+        "yellow",
+        "red",
+        "yellow",
+        "white"
+      ],
+      "roles": [
+        "upper_yellow",
+        "red",
+        "lower_yellow",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S4",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S5",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S8",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S9",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-5-GYRYW",
+      "name": "5-lamp signal: G-Y-R-Y-W",
+      "kind": "signal",
+      "head": "5-GYRYW",
+      "count": 5,
+      "colors": [
+        "green",
+        "yellow",
+        "red",
+        "yellow",
+        "white"
+      ],
+      "roles": [
+        "green",
+        "upper_yellow",
+        "red",
+        "lower_yellow",
+        "white"
+      ],
+      "states": [
+        {
+          "value": "S1",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S2",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S3",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S4",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S5",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S6",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S7",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S8",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "S9",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "blink",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "Ms2",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "OFF",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                255,
+                181,
+                38,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                247,
+                247,
+                238,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nc-classic-RG",
+      "name": "Traffic Light (MQTT)",
+      "kind": "signal",
+      "head": "classic-RG",
+      "count": 2,
+      "colors": [
+        "red",
+        "green"
+      ],
+      "roles": [
+        "red",
+        "green"
+      ],
+      "states": [
+        {
+          "value": "r",
+          "pixels": [
+            {
+              "effect": "solid",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "g",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "solid",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "rf",
+          "pixels": [
+            {
+              "effect": "blink",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "gf",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "blink",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "value": "o",
+          "pixels": [
+            {
+              "effect": "off",
+              "color": [
+                250,
+                48,
+                48,
+                0
+              ]
+            },
+            {
+              "effect": "off",
+              "color": [
+                34,
+                221,
+                82,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "turnout",
+      "name": "Turnout straight / diverging",
+      "kind": "servo",
+      "states": [
+        {
+          "value": "s",
+          "angle": 60
+        },
+        {
+          "value": "t",
+          "angle": 120
+        }
+      ]
+    },
+    {
+      "id": "threeway",
+      "name": "Three-way turnout",
+      "kind": "servo",
+      "states": [
+        {
+          "value": "s",
+          "angle": 90
+        },
+        {
+          "value": "l",
+          "angle": 60
+        },
+        {
+          "value": "r",
+          "angle": 120
+        }
+      ]
+    },
+    {
+      "id": "wye",
+      "name": "Wye turnout",
+      "kind": "servo",
+      "states": [
+        {
+          "value": "l",
+          "angle": 60
+        },
+        {
+          "value": "r",
+          "angle": 120
+        }
+      ]
+    },
+    {
+      "id": "barrier",
+      "name": "Barrier",
+      "kind": "servo",
+      "states": [
+        {
+          "value": "c",
+          "angle": 60
+        },
+        {
+          "value": "o",
+          "angle": 120
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "id": "io-1",
+      "name": "Signal 1",
+      "slot": 0,
+      "pin": 0,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal1",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-2",
+      "name": "Signal 2",
+      "slot": 1,
+      "pin": 1,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal2",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-3",
+      "name": "Signal 3",
+      "slot": 2,
+      "pin": 3,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal3",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-4",
+      "name": "Signal 4",
+      "slot": 3,
+      "pin": 4,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal4",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-5",
+      "name": "Signal 5",
+      "slot": 4,
+      "pin": 5,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal5",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-6",
+      "name": "Signal 6",
+      "slot": 5,
+      "pin": 6,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal6",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-7",
+      "name": "Signal 7",
+      "slot": 6,
+      "pin": 7,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal7",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-8",
+      "name": "Signal 8",
+      "slot": 7,
+      "pin": 10,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal8",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-9",
+      "name": "Signal 9",
+      "slot": 8,
+      "pin": 20,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal9",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    },
+    {
+      "id": "io-10",
+      "name": "Signal 10",
+      "slot": 9,
+      "pin": 21,
+      "enabled": true,
+      "template": "nc-5-GYRYW",
+      "type": "T",
+      "source": "Signal10",
+      "ws": {
+        "type": "WS2812B",
+        "order": "GRB",
+        "brightness": 64,
+        "input": "states"
+      },
+      "servo": {
+        "hz": 50,
+        "minUs": 1000,
+        "maxUs": 2000,
+        "minAngle": 0,
+        "maxAngle": 180,
+        "reverse": false,
+        "speed": 30,
+        "detachAfter": false,
+        "boot": "none",
+        "offline": "hold",
+        "safeAngle": 90
+      }
+    }
+  ]
+}
