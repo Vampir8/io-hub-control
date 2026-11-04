@@ -61,3 +61,13 @@ Chrome desktop/mobile tests for both panels — PASS. Shared CSS remains byte-
 identical. The release audit covered 63 tracked files and the source/binary ZIP;
 local logs, build caches, real network settings and credentials are excluded.
 No physical firmware upload or servo movement was performed for this release.
+
+## Shared dark theme and paired documentation — 2026-11-04
+
+Both panels now use exactly the same CSS: #232323 canvas, #343434 grid,
+24 px grid and existing compact controls. Chrome desktop/mobile checks passed
+for both projects. Fresh documentation screenshots use sample values only.
+The C3 LittleFS image built successfully; the S3 firmware built successfully
+and its binary audit verified the embedded current HTML. The two READMEs share
+section order and common interface text while preserving hardware-specific
+behavior and build instructions. No physical board upload was performed.

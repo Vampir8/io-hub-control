@@ -1,11 +1,12 @@
 # I/O Hub Control
 
-Offline English web configurator and firmware for **ESP32-C3 SuperMini**, driven
-by nControl 2026.1 (Vampir8 mod) through MQTT.
+ESP32 firmware for **nControl model railway control through MQTT**. Configure
+signal heads, turnout servos and physical I/O assignments using an offline node
+editor served by the ESP32.
 
-![Web configurator](docs/panel-io-desktop.png)
+**This edition:** ESP32-C3 SuperMini, up to ten WS signal heads/servos in total.
 
-## Features and limits
+## Features
 
 - Up to **10 devices total**: WS signal heads with 1–5 lamps, servos, or a mix.
 - Six hardware LEDC servo channels plus four timer ISR PWM outputs at **50 Hz**.
@@ -22,6 +23,25 @@ by nControl 2026.1 (Vampir8 mod) through MQTT.
 **Digital sensor inputs, the proposed 12-device layout and German signal
 profiles are future extensions, not implemented features.** User-entered names,
 MQTT labels, protocol codes and stored IDs are not rewritten by this translation.
+
+## Shared web interface
+
+Both Hub Control projects use the same offline node editor, dark theme and
+interaction patterns: a **#232323 canvas**, **#343434 grid**, 24 px spacing,
+compact 22 px node controls, sidebar settings and explicit **Save and apply**.
+The palette, ports and common buttons share one design. Hardware features differ.
+
+The interface, help and diagnostics are in English. Everything is served locally
+by the ESP32; no CDN or internet connection is needed at runtime. Renaming a node
+does not change its MQTT label. The nControl and ESP32 root nodes are protected
+against deletion.
+
+Companion projects: [I/O Hub Control](https://github.com/Vampir8/io-hub-control)
+and [Powered Up Hub Control](https://github.com/Vampir8/powered-up-hub-control).
+
+![I/O Hub Control — shared dark panel](docs/panel-io-desktop.png)
+
+*Documentation preview with sample values; no physical outputs are operated.*
 
 ## Hardware
 
@@ -44,6 +64,97 @@ to ESP32 GND. Never power them from GPIO or the board's 3.3 V output. Connect
 servo signal to its assigned GPIO; WS DATA goes to the first LED's DIN, then
 DOUT to the next DIN. A 3.3 V DATA signal is not guaranteed for a 5 V LED input;
 use a suitable fast level shifter, such as 74AHCT125, when needed.
+
+## First use
+
+1. Join **IO-Hub-xxxxxx-setup**, password **ncontrol-setup** (the fixed setup
+   password; no private credentials are included in this repository).
+2. Open `http://192.168.4.1/` and the ESP32 node's **Settings**.
+3. Set Wi-Fi and nControl's MQTT broker address; default port **1883**, optional
+   username/password. Click **Save and apply**.
+4. Open the LAN IP or `http://io-hub-control-<last six MAC digits>.local/`.
+
+The MQTT Client ID uses the full MAC suffix. nControl discovery displays
+`I/O Hub Control - <suffix>`. Keep identities unique for each ESP32; boards may
+share a broker and state topic but keep independent output configurations.
+Wi-Fi failure makes the setup AP available without blocking output processing.
+
+### Turnout and servo
+
+1. Click **+ Servo**, then connect an ESP32 I/O output to the device input.
+2. Select **Turnout straight / diverging**, source T and the exact nControl label,
+   for example `Turnout1`. Case matters.
+3. Set the template angles (defaults: `s` → 60°, `t` → 120°). Servo defaults are
+   50 Hz and 1000–2000 microseconds; calibrate for your mechanism.
+4. **Save and apply**. Saving does not command an angle and disables MQTT movement.
+5. **Help / tools → Enable servo movement**, then change the turnout in nControl.
+   **Apply cached states to servos** separately commands the last received state.
+
+```text
+T|Turnout1|s
+T|Turnout1|t
+```
+
+Manual test: **Settings → Servo calibration → Enter without movement**, select
+an angle, then explicitly confirm **Perform physical movement**. Finish
+calibration before MQTT control. The node shows the received state and commanded
+target separately; neither is mechanical feedback. Three-way, wye and barrier
+states have English descriptions too.
+
+### Red/green signal
+
+Click **+ Signal**, select **Traffic Light (MQTT)** (`nc-classic-RG`), connect an
+I/O output and assign `Signal1`. This profile uses **LED 0 red, LED 1 green**.
+`r` lights only red, `g` only green, `rf`/`gf` blink the corresponding lamp and
+`o` turns both off. Other heads have different lamp orders. Edit or duplicate a
+template to match your hardware.
+
+```text
+T|Signal1|r
+T|Signal1|g
+T|Signal1|gf
+T|Signal1|o
+```
+
+For three identical heads, reuse one template with three device labels and I/O
+outputs. Edit the shared template once, then save to update all assignments.
+GPIO and MQTT source remain per device.
+
+## MQTT compatibility
+
+Subscribe to **nControl/websocket/rx**: this is where nControl publishes states.
+After all subscriptions are acknowledged, send **W|ST** once to
+**nControl/websocket/tx**. Reconnect repeats subscription and synchronization.
+Synchronization does not guarantee a response for standalone tracks without tiles.
+
+Messages: `T|label|state` or `S|internal-segment-index|numeric-state`. UTF-8, case
+and commas are preserved; callback buffers need not end in NUL. Unknown types,
+topics and invalid payloads are ignored. Duplicate states do not restart servo
+travel or blinking. Missing periodic states do not indicate a broker failure.
+
+Prefer T labels: S indices can change when editing a layout. A Crossover that
+publishes `l` for both positions needs S or another correct source; firmware does
+not guess. State meanings belong to the selected template. No train motor D/PWM,
+battery B requests or CIR declarations are implemented.
+
+nControl publishes T/S in Simulation too. Servo permission starts disabled and
+enabling it does not apply cache automatically. An optional custom permission
+topic accepts OPERATIONAL/SIMULATION/DESIGN and requires nControl configuration;
+it is not a standard mode feed. Disabling PWM does not physically hold a load.
+
+Discovery uses retained QoS 1 metadata/status at
+`nControl/nodes/<node_id>/info` and `/status`, with an offline Last Will.
+
+## Output behavior
+
+Servo movement from MQTT starts disabled. Saving configuration disables it again
+and does not command a new angle. Enable movement explicitly; applying cached
+states is a separate action. Calibration blocks MQTT for the selected servo.
+
+The node shows the received nControl state and commanded servo target separately;
+there is no mechanical feedback. Restart/offline policies are configurable.
+Disabling PWM does not hold a physical load. Repeated states do not restart travel
+or blinking. Signal rendering continues independently of servo permission.
 
 ## Build and upload
 
@@ -90,86 +201,6 @@ LittleFS `0x220000`. The PlatformIO hook removes stock Arduino `boot_app0` at
 `0xe000`, which would overlap this project's NVS. Do not erase flash when
 preserving settings. See [the detailed guide](docs/HUB-IO-V2.md) for ROM upload.
 
-## First connection
-
-1. Join **IO-Hub-xxxxxx-setup**, password **ncontrol-setup** (the fixed setup
-   password; no private credentials are included in this repository).
-2. Open `http://192.168.4.1/` and the ESP32 node's **Settings**.
-3. Set Wi-Fi and nControl's MQTT broker address; default port **1883**, optional
-   username/password. Click **Save and apply**.
-4. Open the LAN IP or `http://io-hub-control-<last six MAC digits>.local/`.
-
-The MQTT Client ID uses the full MAC suffix. nControl discovery displays
-`I/O Hub Control - <suffix>`. Keep identities unique for each ESP32; boards may
-share a broker and state topic but keep independent output configurations.
-Wi-Fi failure makes the setup AP available without blocking output processing.
-
-## Configure a turnout
-
-1. Click **+ Servo**, then connect an ESP32 I/O output to the device input.
-2. Select **Turnout straight / diverging**, source T and the exact nControl label,
-   for example `Turnout1`. Case matters.
-3. Set the template angles (defaults: `s` → 60°, `t` → 120°). Servo defaults are
-   50 Hz and 1000–2000 microseconds; calibrate for your mechanism.
-4. **Save and apply**. Saving does not command an angle and disables MQTT movement.
-5. **Help / tools → Enable servo movement**, then change the turnout in nControl.
-   **Apply cached states to servos** separately commands the last received state.
-
-```text
-T|Turnout1|s
-T|Turnout1|t
-```
-
-Manual test: **Settings → Servo calibration → Enter without movement**, select
-an angle, then explicitly confirm **Perform physical movement**. Finish
-calibration before MQTT control. The node shows the received state and commanded
-target separately; neither is mechanical feedback. Three-way, wye and barrier
-states have English descriptions too.
-
-## Configure a red/green signal
-
-Click **+ Signal**, select **Traffic Light (MQTT)** (`nc-classic-RG`), connect an
-I/O output and assign `Signal1`. This profile uses **LED 0 red, LED 1 green**.
-`r` lights only red, `g` only green, `rf`/`gf` blink the corresponding lamp and
-`o` turns both off. Other heads have different lamp orders. Edit or duplicate a
-template to match your hardware.
-
-```text
-T|Signal1|r
-T|Signal1|g
-T|Signal1|gf
-T|Signal1|o
-```
-
-For three identical heads, reuse one template with three device labels and I/O
-outputs. Edit the shared template once, then save to update all assignments.
-GPIO and MQTT source remain per device.
-
-## MQTT protocol
-
-Subscribe to **nControl/websocket/rx**: this is where nControl publishes states.
-After all subscriptions are acknowledged, send **W|ST** once to
-**nControl/websocket/tx**. Reconnect repeats subscription and synchronization.
-Synchronization does not guarantee a response for standalone tracks without tiles.
-
-Messages: `T|label|state` or `S|internal-segment-index|numeric-state`. UTF-8, case
-and commas are preserved; callback buffers need not end in NUL. Unknown types,
-topics and invalid payloads are ignored. Duplicate states do not restart servo
-travel or blinking. Missing periodic states do not indicate a broker failure.
-
-Prefer T labels: S indices can change when editing a layout. A Crossover that
-publishes `l` for both positions needs S or another correct source; firmware does
-not guess. State meanings belong to the selected template. No train motor D/PWM,
-battery B requests or CIR declarations are implemented.
-
-nControl publishes T/S in Simulation too. Servo permission starts disabled and
-enabling it does not apply cache automatically. An optional custom permission
-topic accepts OPERATIONAL/SIMULATION/DESIGN and requires nControl configuration;
-it is not a standard mode feed. Disabling PWM does not physically hold a load.
-
-Discovery uses retained QoS 1 metadata/status at
-`nControl/nodes/<node_id>/info` and `/status`, with an offline Last Will.
-
 ## Configuration and testing
 
 Schema: [config.schema.json](config.schema.json). Examples use placeholder Wi-Fi,
@@ -198,3 +229,19 @@ node web-editor/ui-test.cjs
 Third-party UI notices are included in source and generated HTML. Hardware
 references: [ESP32-C3 datasheet](https://documentation.espressif.com/esp32-c3_datasheet_en.html)
 and [LEDC documentation](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/peripherals/ledc.html).
+
+## Source layout
+
+| Path | Responsibility |
+| --- | --- |
+| `src/main.cpp` | Wi-Fi, MQTT, HTTP API, discovery and configuration application |
+| `include/protocol.h` | Length-limited UTF-8 T/S parser |
+| `include/config.h`, `include/ports_config.h` | Schema and resource validation |
+| `include/outputs.h`, `include/servo_extra.h` | LEDC, timer PWM and RMT scheduling |
+| `include/store.h` | Two-slot NVS persistence |
+| `web-editor/src/` | English node editor and shared dark theme |
+| `data/index.html` | Generated offline panel |
+| `examples/` | Credential-free example configurations |
+| `test/`, `tools/` | Host tests, preview, build and packaging tools |
+
+Detailed instructions: [I/O guide](docs/HUB-IO-V2.md).
