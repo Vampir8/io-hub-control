@@ -50,8 +50,6 @@ RMT multiplexing does not guarantee simultaneous animation edges on all GPIO.
 SuperMini onboard components vary; external circuits can affect boot strapping.
 No reset-time pulse-free guarantee or mechanical servo feedback is provided.
 
-Digital sensors and the proposed 12-device design remain future work. ETCS and
-German signal discussions did not implement additional firmware features.
 
 ## Publication checks — 2026-11-04
 

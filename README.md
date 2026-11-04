@@ -20,26 +20,17 @@ editor served by the ESP32.
 - Versioned JSON and two NVS slots with generation, CRC and read-back checks.
   MQTT state updates never write to flash. Ordinary reads mask passwords.
 
-**Digital sensor inputs, the proposed 12-device layout and German signal
-profiles are future extensions, not implemented features.** User-entered names,
-MQTT labels, protocol codes and stored IDs are not rewritten by this translation.
+## Web interface
 
-## Shared web interface
-
-Both Hub Control projects use the same offline node editor, dark theme and
-interaction patterns: a **#232323 canvas**, **#343434 grid**, 24 px spacing,
-compact 22 px node controls, sidebar settings and explicit **Save and apply**.
-The palette, ports and common buttons share one design. Hardware features differ.
+An offline node editor with a dark canvas, a 24 px grid, compact controls,
+sidebar settings and explicit **Save and apply** for configuration changes.
 
 The interface, help and diagnostics are in English. Everything is served locally
 by the ESP32; no CDN or internet connection is needed at runtime. Renaming a node
 does not change its MQTT label. The nControl and ESP32 root nodes are protected
 against deletion.
 
-Companion projects: [I/O Hub Control](https://github.com/Vampir8/io-hub-control)
-and [Powered Up Hub Control](https://github.com/Vampir8/powered-up-hub-control).
-
-![I/O Hub Control — shared dark panel](docs/panel-io-desktop.png)
+![I/O Hub Control — web panel](docs/panel-io-desktop.png)
 
 *Documentation preview with sample values; no physical outputs are operated.*
 
@@ -134,8 +125,7 @@ travel or blinking. Missing periodic states do not indicate a broker failure.
 
 Prefer T labels: S indices can change when editing a layout. A Crossover that
 publishes `l` for both positions needs S or another correct source; firmware does
-not guess. State meanings belong to the selected template. No train motor D/PWM,
-battery B requests or CIR declarations are implemented.
+not guess. State meanings belong to the selected template.
 
 nControl publishes T/S in Simulation too. Servo permission starts disabled and
 enabling it does not apply cache automatically. An optional custom permission
@@ -239,7 +229,7 @@ and [LEDC documentation](https://docs.espressif.com/projects/esp-idf/en/stable/e
 | `include/config.h`, `include/ports_config.h` | Schema and resource validation |
 | `include/outputs.h`, `include/servo_extra.h` | LEDC, timer PWM and RMT scheduling |
 | `include/store.h` | Two-slot NVS persistence |
-| `web-editor/src/` | English node editor and shared dark theme |
+| `web-editor/src/` | English node editor source |
 | `data/index.html` | Generated offline panel |
 | `examples/` | Credential-free example configurations |
 | `test/`, `tools/` | Host tests, preview, build and packaging tools |

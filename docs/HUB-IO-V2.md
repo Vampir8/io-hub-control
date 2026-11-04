@@ -145,8 +145,8 @@ name: explicitly map the controlling source and each output's actions.
 ## Build, upload and two boards
 
 Build commands are in the README. Python tests need g++ or ziglang and jsonschema.
-The UI has no CDN assets. Its shared dark theme (#232323 canvas, #343434 grid), 24 px grid, palette and 22 px compact
-node buttons/pills share the design of the sibling Powered Up Hub Control project.
+The UI has no CDN assets. Its dark theme uses a #232323 canvas, #343434 grid, 24 px spacing and 22 px compact
+node buttons and status fields.
 
 Custom flash offsets: bootloader 0x0, table 0x8000, application 0x20000,
 LittleFS 0x220000. Never write stock boot_app0 at 0xe000 or erase flash when
