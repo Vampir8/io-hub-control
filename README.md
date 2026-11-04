@@ -36,6 +36,11 @@ against deletion.
 
 ## Hardware
 
+Hardware used: **ESP32-C3 SuperMini** with an
+**ESP32-C3 Super Mini Breakout Expansion Board**.
+
+<img src="docs/hardware/esp32-c3-super-mini-breakout-expansion-board.jpg" alt="ESP32-C3 Super Mini Breakout Expansion Board" width="420">
+
 Allowed processor GPIO numbers: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 21**.
 Default I/O 1–10 map: **0, 1, 3, 4, 5, 6, 7, 10, 20, 21**. These are GPIO numbers,
 not connector positions. GPIO18/19 are excluded and can serve native USB.
